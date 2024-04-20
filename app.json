@@ -6,6 +6,19 @@
     },
     "name": "khairi-anime-lists",
     "slug": "khairi-anime-lists",
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "95fa35cf-e03a-44f1-a43b-5aa3e0acfd01"
+      }
+    },
+    "android": {
+      "package": "com.kairi.khairianimelists"
+    }
   }
 }
