@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "scheme": "myapp",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "khairi-anime-lists",
+    "slug": "khairi-anime-lists",
+    "plugins": ["expo-router"]
+  }
+}
