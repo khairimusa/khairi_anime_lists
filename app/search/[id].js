@@ -14,7 +14,7 @@ import { ScreenHeaderBtn, AnimeListCard } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import styles from "../../styles/search";
 
-const JobSearch = () => {
+const AnimeSearch = () => {
   const params = useSearchParams();
   const router = useRouter();
 
@@ -86,11 +86,11 @@ const JobSearch = () => {
         data={searchResult}
         renderItem={({ item }) => (
           <AnimeListCard
-            job={item}
-            handleNavigate={() => router.push(`/anime-details/${item.job_id}`)}
+            anime={item}
+            handleNavigate={() => router.push(`/anime-details/${item.mal_id}`)}
           />
         )}
-        keyExtractor={(item) => item.job_id}
+        keyExtractor={(item) => item.mal_id}
         contentContainerStyle={{ padding: SIZES.medium, rowGap: SIZES.medium }}
         ListHeaderComponent={() => (
           <>
@@ -139,4 +139,4 @@ const JobSearch = () => {
   );
 };
 
-export default JobSearch;
+export default AnimeSearch;

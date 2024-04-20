@@ -4,7 +4,7 @@ import ScreenHeaderBtn from "./common/header/ScreenHeaderBtn";
 import Welcome from "./home/welcome/Welcome";
 import AnimeLists from "./home/animelists/AnimeLists";
 
-// job details screen
+// anime details screen
 import Anime from "./animedetails/anime/Anime";
 import { default as AnimeTabs } from "./animedetails/tabs/Tabs";
 import { default as AnimeAbout } from "./animedetails/about/About";

@@ -20,8 +20,8 @@ const Layout = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack initialRouteName="home">
-        <Stack.Screen name="home" />
+      <Stack>
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
       </Stack>
     </QueryClientProvider>
   );

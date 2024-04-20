@@ -33,17 +33,17 @@ const AnimeListCard = ({ anime, handleNavigate }) => {
       </TouchableOpacity>
 
       <View style={styles.textContainer}>
-        <Text style={styles.jobName} numberOfLines={1}>
+        <Text style={styles.animeName} numberOfLines={1}>
           {anime?.title}
         </Text>
 
-        <Text style={styles.jobType}>{anime?.rating}</Text>
+        <Text style={styles.animeType}>{anime?.rating}</Text>
         <View style={styles.ratingsContainer}>
           <Fontisto name="star" size={12} color="gold" />
-          <Text style={styles.jobType}>{anime?.score}</Text>
-          <Text style={styles.jobType}>({nFormatter(anime?.scored_by)})</Text>
+          <Text style={styles.animeType}>{anime?.score}</Text>
+          <Text style={styles.animeType}>({nFormatter(anime?.scored_by)})</Text>
         </View>
-        <Text style={styles.jobType}>
+        <Text style={styles.animeType}>
           {anime?.season} {anime?.year}
         </Text>
       </View>

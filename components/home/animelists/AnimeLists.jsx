@@ -1,5 +1,5 @@
-import React from "react";
-import { useRouter } from "expo-router";
+import React, { useEffect } from "react";
+import { useRouter, usePathname } from "expo-router";
 import { View, Text, ActivityIndicator } from "react-native";
 
 import styles from "./animelists.style";

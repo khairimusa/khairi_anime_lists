@@ -3,10 +3,15 @@ import axios from "axios";
 
 const fetchData = async (endpoint) => {
   let baseUrl = "https://api.jikan.moe/v4/anime";
+  const limit = 10;
+  const status = "airing";
 
   if (endpoint) {
     baseUrl += `/${endpoint}`;
   }
+
+  baseUrl += `?limit=${limit}`;
+  baseUrl += `&status=${status}`;
 
   const { data } = await axios.get(baseUrl);
 
