@@ -19,17 +19,15 @@ const Home = () => {
         }}
       />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            flex: 1,
-            padding: SIZES.medium,
-          }}
-        >
-          <Welcome />
-          <AnimeLists />
-        </View>
-      </ScrollView>
+      <View
+        style={{
+          flex: 1,
+          padding: SIZES.medium,
+        }}
+      >
+        <Welcome />
+        <AnimeLists />
+      </View>
     </SafeAreaView>
   );
 };
