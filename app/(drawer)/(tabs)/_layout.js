@@ -1,13 +1,22 @@
-import { View, Text, Button } from "react-native";
-import React, { useEffect } from "react";
+import { View } from "react-native";
+import React from "react";
 import { Tabs } from "expo-router";
 import { MaterialIcons, Entypo, Foundation } from "@expo/vector-icons";
 import { DrawerToggleButton } from "@react-navigation/drawer";
+import { COLORS } from "../../../constants";
 
-const CustomTabs = (props) => {
+const CustomTabs = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarStyle: {
+          borderTopColor: "#ccc",
+        },
+        headerStyle: {
+          backgroundColor: COLORS.lightWhite,
+          borderBottomColor: COLORS.lightWhite,
+        },
+        headerShown: true,
         headerLeft: () => <DrawerToggleButton tintColor="#000" />,
       }}
     >
@@ -18,7 +27,7 @@ const CustomTabs = (props) => {
             <MaterialIcons name="live-tv" size={24} color={color} />
           ),
           tabBarLabel: "Airing",
-          headerTitle: "Airing Shows",
+          headerTitle: "",
           headerRight: () => <View></View>,
         }}
       />
@@ -29,7 +38,7 @@ const CustomTabs = (props) => {
             <Foundation name="burst-new" size={24} color={color} />
           ),
           tabBarLabel: "Upcoming",
-          headerTitle: "Upcoming Shows",
+          headerTitle: "",
         }}
       />
       <Tabs.Screen
@@ -39,7 +48,7 @@ const CustomTabs = (props) => {
             <Entypo name="archive" size={24} color={color} />
           ),
           tabBarLabel: "Completed",
-          headerTitle: "Completed Shows",
+          headerTitle: "",
         }}
       />
     </Tabs>

@@ -1,18 +1,19 @@
 import { useRouter } from "expo-router";
-import { View, Text, ActivityIndicator, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  Dimensions,
+} from "react-native";
 
 import styles from "./animelists.style";
 import { COLORS } from "../../../constants";
 import AnimeListCard from "../../common/cards/animelistscard/AnimeListCard";
-import useGetPosts from "../../../hook/useGetPosts";
 
-const AnimeLists = () => {
+const AnimeLists = (props) => {
+  const { data, isLoading, hasNextPage, fetchNextPage, error, title } = props;
   const router = useRouter();
-  const { data, isLoading, refetch, hasNextPage, fetchNextPage, error } =
-    useGetPosts();
-
-  const dataArr = data?.pages.map((page) => page).flat();
-
   const keyExtractor = (_, index) => index.toString();
 
   const renderItem = ({ item }) => (
@@ -37,21 +38,29 @@ const AnimeLists = () => {
     }
   };
 
+  const windowHeight = Dimensions.get("window").height;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Anime Lists</Text>
+        <Text style={styles.headerTitle}>{title ?? "bro"}</Text>
       </View>
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size="large" color={COLORS.primary} />
+          <View
+            style={{
+              paddingVertical: windowHeight / 3.1,
+            }}
+          >
+            <ActivityIndicator size="large" color={COLORS.primary} />
+          </View>
         ) : error ? (
           <Text>Something went wrong</Text>
         ) : (
           <View style={{ marginBottom: 80 }}>
             <FlatList
-              data={dataArr}
+              data={data}
               keyExtractor={keyExtractor}
               renderItem={renderItem}
               onEndReached={onReachEnd}

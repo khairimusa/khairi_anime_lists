@@ -14,6 +14,9 @@ const nFormatter = (num) => {
   if (num >= 1000) {
     return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K";
   }
+  if (!num) {
+    return 0;
+  }
   return num;
 };
 
@@ -37,15 +40,36 @@ const AnimeListCard = ({ anime, handleNavigate }) => {
           {anime?.title}
         </Text>
 
-        <Text style={styles.animeType}>{anime?.rating}</Text>
-        <View style={styles.ratingsContainer}>
-          <Fontisto name="star" size={12} color="gold" />
-          <Text style={styles.animeType}>{anime?.score}</Text>
-          <Text style={styles.animeType}>({nFormatter(anime?.scored_by)})</Text>
-        </View>
-        <Text style={styles.animeType}>
-          {anime?.season} {anime?.year}
-        </Text>
+        {anime?.rating ? (
+          <Text style={styles.animeType}>{anime?.rating}</Text>
+        ) : (
+          <Text style={styles.animeType}>No Ratings</Text>
+        )}
+
+        {anime?.score ? (
+          <View style={styles.ratingsContainer}>
+            <Fontisto name="star" size={12} color="gold" />
+            <Text style={styles.animeType}>{anime?.score}</Text>
+            <Text style={styles.animeType}>
+              ({nFormatter(anime?.scored_by)})
+            </Text>
+          </View>
+        ) : (
+          <View style={styles.ratingsContainer}>
+            <Fontisto name="star" size={12} color="gold" />
+            <Text style={styles.animeType}>0</Text>
+            <Text style={styles.animeType}>
+              ({nFormatter(anime?.scored_by)})
+            </Text>
+          </View>
+        )}
+        {anime?.season ? (
+          <Text style={styles.animeType}>
+            {anime?.season} {anime?.year}
+          </Text>
+        ) : (
+          <Text style={styles.animeType}>Release Date N/A</Text>
+        )}
       </View>
     </TouchableOpacity>
   );

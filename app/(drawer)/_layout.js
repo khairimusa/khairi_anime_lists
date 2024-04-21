@@ -14,28 +14,15 @@ const CustomDrawerContent = (props) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log(pathname);
+    // console.log(pathname);
   }, [pathname]);
 
   return (
     <DrawerContentScrollView {...props}>
-      <View style={styles.userInfoWrapper}>
-        <Image
-          source={{
-            uri: "https://raw.githubusercontent.com/khairimusa/landing-page/main/public/profile-removed.webp",
-          }}
-          width={80}
-          height={80}
-          style={styles.userImg}
-        />
-        <View style={styles.userDetailsWrapper}>
-          <Text style={styles.userName}>Khairi Musa</Text>
-        </View>
-      </View>
       <DrawerItem
         icon={({ color, size }) => (
-          <Feather
-            name="list"
+          <MaterialIcons
+            name="live-tv"
             size={size}
             color={pathname == "/airing" ? "#fff" : "#000"}
           />
@@ -76,10 +63,12 @@ export default function Layout() {
   return (
     <Drawer
       drawerContent={(props) => <CustomDrawerContent {...props} />}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, headerTintColor: "#000" }}
     >
-      <Drawer.Screen name="favourites" options={{ headerShown: true }} />
-      <Drawer.Screen name="settings" options={{ headerShown: true }} />
+      <Drawer.Screen
+        name="favourites"
+        options={{ headerShown: true, headerTitle: "List of Favourites" }}
+      />
     </Drawer>
   );
 }

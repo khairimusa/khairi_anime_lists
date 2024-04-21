@@ -96,7 +96,6 @@ const AnimeSearch = () => {
           <>
             <View style={styles.container}>
               <Text style={styles.searchTitle}>{params.id}</Text>
-              <Text style={styles.noOfSearchedJobs}>Job Opportunities</Text>
             </View>
             <View style={styles.loaderContainer}>
               {searchLoader ? (
