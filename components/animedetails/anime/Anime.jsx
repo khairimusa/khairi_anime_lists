@@ -22,13 +22,43 @@ const Anime = ({ animeLogo, animeTitle, genre, producer, year }) => {
       </View>
 
       <View style={styles.animeInfoBox}>
-        <Text style={styles.genre}>{genre} </Text>
-        <Octicons name="dot-fill" size={12} color="black" />
-        <View style={styles.producerBox}>
-          <Text style={styles.producerName}> {producer} </Text>
-        </View>
-        <Octicons name="dot-fill" size={12} color="black" />
-        <Text style={styles.genre}> {year}</Text>
+        {genre ? (
+          <>
+            <Text style={styles.genre}>{genre} </Text>
+            <Octicons name="dot-fill" size={12} color="black" />
+          </>
+        ) : (
+          <>
+            <Text style={styles.genre}>Genre N/A </Text>
+            <Octicons name="dot-fill" size={12} color="black" />
+          </>
+        )}
+
+        {producer ? (
+          <>
+            <View style={styles.producerBox}>
+              <Text style={styles.producerName}> {producer} </Text>
+            </View>
+            <Octicons name="dot-fill" size={12} color="black" />
+          </>
+        ) : (
+          <>
+            <View style={styles.producerBox}>
+              <Text style={styles.producerName}> Producer N/A </Text>
+            </View>
+            <Octicons name="dot-fill" size={12} color="black" />
+          </>
+        )}
+
+        {year ? (
+          <>
+            <Text style={styles.genre}> {year}</Text>
+          </>
+        ) : (
+          <>
+            <Text style={styles.genre}> Date N/A</Text>
+          </>
+        )}
       </View>
     </View>
   );

@@ -8,6 +8,8 @@ const useGetAiringAnimes = () => {
         page: pageParam,
         limit: 7,
         status: "airing",
+        order_by: "score",
+        sort: "desc",
       },
     });
     return data.data;

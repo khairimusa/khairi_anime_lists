@@ -8,6 +8,8 @@ const useGetUpcomingAnime = () => {
         page: pageParam,
         limit: 7,
         status: "upcoming",
+        order_by: "popularity",
+        sort: "asc",
       },
     });
     return data.data;

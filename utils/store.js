@@ -4,6 +4,7 @@ const useStore = create((set) => ({
   airingLists: [],
   upcomingLists: [],
   completedLists: [],
+  likedLists: [],
   setAiringLists: (airingLists) => {
     set((state) => ({
       ...state,

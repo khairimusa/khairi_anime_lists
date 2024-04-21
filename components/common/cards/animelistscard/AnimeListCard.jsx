@@ -68,7 +68,7 @@ const AnimeListCard = ({ anime, handleNavigate }) => {
             {anime?.season} {anime?.year}
           </Text>
         ) : (
-          <Text style={styles.animeType}>Release Date N/A</Text>
+          <Text style={styles.animeType}>Date N/A</Text>
         )}
       </View>
     </TouchableOpacity>

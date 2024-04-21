@@ -8,6 +8,8 @@ const useGetCompletedAnimes = () => {
         page: pageParam,
         limit: 7,
         status: "complete",
+        order_by: "score",
+        sort: "desc",
       },
     });
     return data.data;
