@@ -10,4 +10,4 @@ yarn && yarn start
 eas build -p android --profile preview
 ```
 
-[Android App Bundle(APK)](https://expo.dev/accounts/kairi/projects/khairi-anime-lists/builds/c0df90cb-0a86-4472-a05e-3e21eeecbb75)
+[Android App Bundle(APK) - Latest](https://expo.dev/accounts/kairi/projects/khairi-anime-lists/builds/dc3169f0-5af6-46c4-ba47-a801ad428a3d)
