@@ -27,7 +27,9 @@ const AnimeLists = (props) => {
       <AnimeListCard
         anime={item}
         key={item.mal_id}
-        handleNavigate={() => router.push(`/anime-details/${item.mal_id}`)}
+        handleNavigate={() => {
+          router.push(`/anime-details/${item.mal_id}`);
+        }}
       />
     </View>
   );

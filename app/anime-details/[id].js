@@ -1,5 +1,5 @@
 import { Stack, useRouter, useSearchParams } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   View,
   Text,
@@ -9,9 +9,15 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
+  Pressable,
+  Checkbox,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "react-native";
 import { StyleSheet } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import {
   AnimeAbout,
@@ -21,21 +27,33 @@ import {
 } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
+import useStore from "../../utils/store";
 
 const styles = StyleSheet.create({
   likeBtn: {
     width: 40,
     height: 40,
-    borderWidth: 1,
-    borderColor: "#F37453",
-    borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
   },
   likeBtnImage: {
     width: "40%",
     height: "40%",
-    tintColor: "#F37453",
+    tintColor: COLORS.primary,
+  },
+  likedBtn: {
+    width: 40,
+    height: 40,
+    borderWidth: 1,
+    borderColor: COLORS.primary,
+    borderRadius: SIZES.medium,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  likedBtnImage: {
+    width: "40%",
+    height: "40%",
+    tintColor: COLORS.primary,
   },
 });
 
@@ -46,9 +64,16 @@ const AnimeDetails = () => {
   const params = useSearchParams();
   const router = useRouter();
   const id = params.id;
-
+  const [currentAnime, setCurrentAnime] = useState();
+  const {
+    favourite,
+    setFavourite,
+    addFavourite,
+    removeFavourite,
+    toggleFavourite,
+    favouriteAnimes,
+  } = useStore();
   const { data, isLoading, error, refetch } = useFetch(id);
-
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -79,6 +104,8 @@ const AnimeDetails = () => {
     }
   };
 
+  useEffect(() => {}, [favourite]);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <QueryClientProvider client={queryClient}>
@@ -95,15 +122,37 @@ const AnimeDetails = () => {
               />
             ),
             headerRight: () => (
-              <View>
-                <TouchableOpacity style={styles.likeBtn}>
-                  <Image
-                    source={icons.heartOutline}
-                    resizeMode="contain"
-                    style={styles.likeBtnImage}
-                  />
-                </TouchableOpacity>
-              </View>
+              <>
+                {isLoading ? (
+                  <Text></Text>
+                ) : favourite ? (
+                  <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => {
+                      setFavourite(!favourite);
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      name="cards-heart"
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                  </Pressable>
+                ) : (
+                  <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => {
+                      setFavourite(!favourite);
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      name="cards-heart-outline"
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                  </Pressable>
+                )}
+              </>
             ),
             headerTitle: "",
           }}
@@ -137,7 +186,6 @@ const AnimeDetails = () => {
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
                 />
-
                 {displayTabContent()}
               </View>
             )}
